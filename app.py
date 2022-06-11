@@ -16,8 +16,8 @@ def predict_api():
     data=request.json['data']
     print(data)
     new_data=[list(data.values())]
-    output=model.predict(new_data)[0]
-    return jsonify(output)
+    output=model.predict(array(new_data).tolist())[0].tolist()
+    return jsonify({'output':output})
 
 @app.route('/predict',methods=['POST'])
 def predict():
